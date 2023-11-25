@@ -5,7 +5,8 @@ const Topbar = () => {
     return (
         <nav className="navbar navbar-expand  bg-white topbar mb-4 shadow sticky-top">
             <div className="container">
-                <a className="navbar-brand" href="...">CRUD</a>
+            <i className="fa-solid fa-globe fa-2xl me-2 text-black"></i>
+                <span className="h2 text-black" href="...">CRUD</span>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>

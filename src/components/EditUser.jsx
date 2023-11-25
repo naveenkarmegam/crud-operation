@@ -2,16 +2,17 @@ import React, { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useFormik } from 'formik'
 import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { editUser,setUsers} from '../reducer/UserSlice'
+import { useDispatch, useSelector } from 'react-redux'
+import { editUser,setLoading,setUsers} from '../reducer/UserSlice'
 import {  toast } from 'react-toastify'
-
+import { SyncLoader } from "react-spinners";
 
 const EditUser = () => {
     const params = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const closeAfter15 = () => toast("Upadte Done", {  type: toast.TYPE.INFO,autoClose: 2000 });
+  const {loading} = useSelector(state=>state.app)
+  const closeAfter15 = (name) => toast(`${name} is updated`, {  type: toast.TYPE.SUCCESS,autoClose: 2000 });
     const formik = useFormik({
         initialValues: {
             name: "",
@@ -72,13 +73,14 @@ const EditUser = () => {
         },
         onSubmit: async (values) => {
             try {
+                dispatch(setLoading());
                 const response = await axios.put(
                   `https://65615e6adcd355c08323c948.mockapi.io/users/${params.id}`,
                   values
                 );
                 dispatch(setUsers(response.data));  
                 navigate('/');
-                closeAfter15()
+                closeAfter15(values.name)
                 
               } catch (error) {
                 console.error(error);
@@ -106,7 +108,11 @@ const EditUser = () => {
 
     return (
         <div className="container-fluid">
-          <form action="" onSubmit={formik.handleSubmit}>
+        {
+            loading?
+            <SyncLoader color="#36d7b7" className="text-center" />
+            :
+            <form action="" onSubmit={formik.handleSubmit}>
             <div className="row">
               <div className="col-lg-4 mb-3">
                 <label className=" form-label">Name</label>
@@ -248,6 +254,7 @@ const EditUser = () => {
               </div>
             </div>
           </form>
+        }
         </div>
       );
 }
