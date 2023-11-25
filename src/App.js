@@ -21,7 +21,7 @@ function App() {
    
     <div id="content">
         <Topbar />
-        <div className="container-fluid">
+        <div className="container-fluid p-sm-0 m-sm-0 px-md-5">
           <Routes>
             {/* <Route path="/" element={<Dashboard />}></Route> */}
             <Route path="/" element={<User />}></Route>

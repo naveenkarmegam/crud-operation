@@ -23,9 +23,9 @@ const ViewUser = () => {
         getData()
     }, [])
     return (
-        <div className='container min-vh-100'>
+        <div className='container min-vh-100 p-0'>
             <div className="row justify-content-center align-content-center mt-5">
-                <div className="col-10">
+                <div className="  col-sm-12">
                     <div className="card text-center shadow">
                         <div className="card-header h3">
                             User Details
@@ -35,7 +35,7 @@ const ViewUser = () => {
               
               <SyncLoader color="#36d7b7" className="text-center" />
             ) :( 
-                            <div className="table-responsive mx-5">
+                            <div className="table-responsive mx-lg-5">
                                 <table className="table table-bordered table-striped">
                                     <tbody>
                                         <tr>

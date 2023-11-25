@@ -235,7 +235,7 @@ const CreateUser = () => {
           </div>
 
           <div className="col-lg-12 text-center mt-4">
-            <input type="submit" className="btn btn-primary px-5 col-3 py-2" value={"Submit"} />
+            <input type="submit" className="btn btn-primary px-5 col-lg-3 py-2" value={"Submit"} />
           </div>
         </div>
       </form>
